@@ -1,5 +1,6 @@
 -- "Tables" Creation of DataBase "WoodenDoor" --
 
+--use WoodenDoor;
 
 create table "User"
 (
