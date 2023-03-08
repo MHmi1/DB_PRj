@@ -1,4 +1,4 @@
-﻿-- "Tables" Creation of DataBase "WoodenDoor" --
+-- "Tables" Creation of DataBase "WoodenDoor" --
 
 
 create table "User"
@@ -7,7 +7,7 @@ create table "User"
 	Password   varchar(100)   Not Null ,
 	FName	   nvarchar(25)   Not Null , 
 	LName	   nvarchar(25)   Not Null , 
-	Tel	       varchar(20)             ,
+	Tel	   varchar(20)             ,
 
 	Primary Key (Email)
 );
@@ -15,13 +15,13 @@ create table "User"
 
 create table Applicant
 (
-	Email       varchar(50)   Not Null ,
-	Uid         int           Not Null ,
-	Work_Exp    tinyint                ,
-	AppLocation nvarchar(50)  Not Null , 
-	Gender      char          Not Null ,
-	Birthday    date                   ,
-	Req_Sal     smallint               ,
+	Email        varchar(50)   Not Null ,
+	Uid          int           Not Null ,
+	Work_Exp     tinyint                ,
+	AppLocation  nvarchar(50)  Not Null , 
+	Gender       char          Not Null ,
+	Birthday     date                   ,
+	Req_Sal      smallint               ,
 
 	Primary Key (Email),
 	unique (Uid) 
@@ -73,15 +73,15 @@ create table Cats
 
 create table Ads
 (
-	Aid             int			   Not Null  identity(1,1) ,
+	Aid             int	       Not Null  identity(1,1) ,
 	BName           nvarchar(75)   Not Null ,
-	Title		    nvarchar(100)  Not Null ,
-	Context         ntext		   Not Null ,
-	Ads_Location    nvarchar(50)			,
+	Title		nvarchar(100)  Not Null ,
+	Context         ntext	       Not Null ,
+	Ads_Location    nvarchar(50)	        ,
 	Copp_Type       nvarchar(15)   Not Null ,
-	Offer_Sal       smallint		        ,
+	Offer_Sal       smallint	        ,
 	RegDate         date           Not Null ,
-	ExpireDate      date		   Not Null	,
+	ExpireDate      date	       Not Null	,
 	IsVisible       bit            Not Null  default 1 ,
 	IsValid         bit            Not Null  default 0 , 
 
@@ -124,12 +124,12 @@ create table Blogger
 
 create table Comment
 (
-	Cid         int		   Not Null  identity(1,1) ,
+	Cid         int	       Not Null  identity(1,1) ,
 	Pid         int        Not Null ,
-	Uid		    int        Not Null ,
+	Uid	    int        Not Null ,
 	Context     ntext      Not Null ,
 	SendDate    datetime2  Not Null ,
-	ReplayCid   int		        	,
+	ReplayCid   int		        ,
 
 	Primary Key (Cid,Pid,Uid),
 	unique (Cid)
@@ -138,13 +138,13 @@ create table Comment
 
 create table Post
 (
-	Pid         int			    Not Null  identity(1,1) ,
-	Writer_id   int				Not Null ,
-	Title		nvarchar(100)   Not Null ,
-	Context     ntext		    Not Null ,
-	Poster      image		       	     ,
+	Pid         int		    Not Null  identity(1,1) ,
+	Writer_id   int		    Not Null ,
+	Title	    nvarchar(100)   Not Null ,
+	Context     ntext	    Not Null ,
+	Poster      image		     ,
 	SendDate    datetime2	    Not Null ,
-	Status      nvarchar(20)	Not Null  default  N'پیش نویس',
+	Status      nvarchar(20)    Not Null  default  N'پیش نویس',
 
 	Primary Key (Pid)
 );
@@ -156,9 +156,9 @@ create table Post
 
 create table Recommend
 (
-	App_Email   varchar(50)		 Not Null ,
-	Ads_id      int			     Not Null ,
-	Score	    tinyint					  ,
+	App_Email   varchar(50)	  Not Null ,
+	Ads_id      int		  Not Null ,
+	Score	    tinyint	           ,
 
 	Primary Key (App_Email,Ads_id)  
 );
@@ -166,8 +166,8 @@ create table Recommend
 
 create table Apply_Ads
 (
-	App_Email   varchar(50)		 Not Null ,
-	Ads_id      int			     Not Null ,
+	App_Email   varchar(50)	     Not Null ,
+	Ads_id      int		     Not Null ,
 	Status      nvarchar(25)     Not Null  default  N'در صف انتظار',  
 
 	Primary Key (App_Email,Ads_id)  
@@ -178,7 +178,7 @@ create table Need_Skill
 (
 	Skill_Name    nvarchar(30)   Not Null ,
 	Skill_Cat     nvarchar(35)   Not Null ,
-	Ads_id		  int			 Not Null ,
+	Ads_id	      int	     Not Null ,
 
 	Primary Key (Skill_Name,Skill_Cat,Ads_id)  
 );
@@ -188,8 +188,8 @@ create table Has_Skill
 (
 	Skill_Name    nvarchar(30)   Not Null ,
 	Skill_Cat     nvarchar(35)   Not Null ,
-	App_Email	  varchar(50)    Not Null ,  
-	Level         tinyint				  ,
+	App_Email     varchar(50)    Not Null ,  
+	Level         tinyint		      ,
 
 	Primary Key (Skill_Name,Skill_Cat,App_Email)  
 );
@@ -197,9 +197,9 @@ create table Has_Skill
 
 create table React
 (
-	Uid			 int    Not Null ,
-	Pid			 int	Not Null ,
-	React_Type	 bit			 , 
+	Uid		 int    Not Null ,
+	Pid		 int	Not Null ,
+	React_Type	 bit		 , 
 
 	Primary Key (Uid,Pid)  
 );
@@ -216,7 +216,7 @@ create table Add_Fav
 
 create table Has_Role  
 (
-	Role_Name	 varchar(20)    Not Null ,
+	Role_Name    varchar(20)    Not Null ,
 	User_Email   varchar(50)    Not Null ,
 
 	Primary Key (Role_Name,User_Email)  
