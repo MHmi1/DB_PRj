@@ -46,12 +46,12 @@ HAVING Count(*) > 5;
 SELECT Avg (DATEDIFF (year, GETDATE(), Birthday) ) AS Avg_Age
 FROM Applicant
 WHERE Email IN (SELECT Email
-				FROM (Applicant JOIN Has_Skill ON Email = App_Email)
-				WHERE Skill_Name LIKE '%Objective-c%'
-				INTERSECT
-				SELECT Email
-				FROM (Applicant JOIN Has_Skill ON Email = App_Email)
-				WHERE Skill_Name LIKE '%Network+%');
+		FROM (Applicant JOIN Has_Skill ON Email = App_Email)
+		WHERE Skill_Name LIKE '%Objective-c%'
+		INTERSECT
+		SELECT Email
+		FROM (Applicant JOIN Has_Skill ON Email = App_Email)
+		WHERE Skill_Name LIKE '%Network+%');
 
 
 
@@ -66,8 +66,8 @@ WHERE (Work_Exp BETWEEN 3 AND 5) AND (Req_Sal BETWEEN 12 AND 16);
 SELECT Applicant.* 
 FROM Applicant 
 WHERE Gender ='M' AND Email IN (SELECT App_email
-								FROM (Ads JOIN Apply_Ads ON Aid = Ads_id)
-								WHERE Applicant.AppLocation = Ads.Ads_Location ); 
+				FROM (Ads JOIN Apply_Ads ON Aid = Ads_id)
+				WHERE Applicant.AppLocation = Ads.Ads_Location ); 
 
 
 
@@ -91,5 +91,5 @@ GROUP BY Gender
 SELECT Post.* 
 FROM ( (Post JOIN Blogger ON Writer_id = Uid) JOIN Applicant ON Blogger.Uid = Applicant.Uid)
 WHERE ( Work_Exp BETWEEN 2 AND 4 ) AND Email IN (SELECT App_Email 
-												 FROM Apply_Ads 
-											     WHERE Status ='Rejected')
+						 FROM Apply_Ads 
+					   	 WHERE Status ='Rejected')
