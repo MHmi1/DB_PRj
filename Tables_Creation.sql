@@ -21,7 +21,7 @@ create table Applicant
 	Work_Exp     tinyint                ,
 	AppLocation  nvarchar(50)  Not Null , 
 	Gender       char          Not Null ,
-	Birthday     date                   ,
+	Birthday     date                   check (DATEDIFF (year, GETDATE(), Birthday) > 15) ,
 	Req_Sal      smallint               ,
 
 	Primary Key (Email),
