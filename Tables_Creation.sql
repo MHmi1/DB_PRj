@@ -133,8 +133,8 @@ create table Comment
 	SendDate    datetime2  Not Null ,
 	ReplayCid   int		        	,
 
-	Primary Key (Cid,Pid,Uid),
-	unique (Cid)
+	Primary Key (Cid),
+	unique (Cid,Pid,Uid)
 );
 
 
