@@ -1,6 +1,6 @@
 -- Adding All Foreign Keys --
+Use WoodenDoor;
 
---use WoodenDoor;
 
 --
 ALTER TABLE Applicant
@@ -116,3 +116,30 @@ ADD FOREIGN KEY (Role_Name) REFERENCES Role(Role_Name);
 
 ALTER TABLE Has_Permission
 ADD FOREIGN KEY (Per_name) REFERENCES Permission(Per_Name);
+
+
+
+
+-- Some Constraints --
+
+--
+ALTER TABLE Applicant
+ADD CONSTRAINT Valid_Age CHECK ( DATEDIFF (year, Birthday, GETDATE()) > 15 );
+
+ALTER TABLE Applicant
+ADD CONSTRAINT Valid_ReqSal CHECK ( Req_Sal > 0 );
+
+
+--
+ALTER TABLE Business
+ADD CONSTRAINT Valid_FundDate CHECK ( FundDate < GETDATE() );
+
+
+--
+ALTER TABLE Ads
+ADD CONSTRAINT Valid_OfferSal CHECK ( Offer_Sal > 0 );
+
+ALTER TABLE Ads
+ADD CONSTRAINT Ads_Duration CHECK ( DATEDIFF (month, RegDate, ExpireDate) < 2 );
+
+
